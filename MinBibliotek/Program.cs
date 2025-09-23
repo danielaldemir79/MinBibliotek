@@ -4,20 +4,29 @@
     {
         static void Main(string[] args)
         {
+            Begin();
 
-            Console.WriteLine("Välkommen till din bibliotek!");
+           
+        }
+
+        public static void Begin()
+        {
+            Console.WriteLine();
+            Console.WriteLine("LINKÖPINGS BIBLIOTEK");
+            Console.WriteLine("VÄLKOMMEN!");
             Console.WriteLine();
             Console.WriteLine("Logga in här nedan");
-            Console.WriteLine();
-            
+
             User loggedInUser = LoggaIn.Login();
-            
+
             if (loggedInUser != null)
             {
                 loggedInUser.Menu();
             }
-
-           
+            else
+            {
+                Begin();
+            }
         }
     }
 }

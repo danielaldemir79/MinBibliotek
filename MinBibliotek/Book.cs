@@ -22,16 +22,19 @@ namespace MinBibliotek
             Book newBook = new Book();
 
             Console.WriteLine();
-
-            Console.WriteLine("Lägga till Bok");
+            Console.WriteLine("Lägga till Bok");           
             Console.Write("Ange bokens ISBN: ");
             newBook.ISBN = Validering.GetInt();
-            if (Books.Any(thisBook => thisBook.ISBN == newBook.ISBN))
+                
+            foreach(Book b in Books)
             {
-                Console.WriteLine($"Boken med ISBN {newBook.ISBN} finns redan i systemet.");
-                return;
+                if (b.ISBN == newBook.ISBN)
+                {
+                    Console.WriteLine($"Boken med ISBN {newBook.ISBN} finns redan i systemet.");
+                    return;
+                }
             }
-
+           
             Console.Write("Ange boktitel: ");
             newBook.Title = Validering.GetString();
             Console.Write("Ange författare: ");
@@ -48,7 +51,43 @@ namespace MinBibliotek
         
         
         public static void RemoveBook()
-        { }
+        { 
+            Book removeBook = new Book();
+
+            Console.WriteLine();
+            Console.WriteLine("Ta bort Bok");
+            Console.Write("Ange bokens ISBN som du vill ta bort: ");    
+            int bookToremove = Validering.GetInt();
+
+            foreach (Book b in Books)
+            {
+                if (bookToremove == b.ISBN)
+                {
+
+                    removeBook = b;
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine();
+                    Console.WriteLine($"Boken {removeBook.Title} med ISBN {removeBook.ISBN} är nu raderad.");
+                    Console.ResetColor();
+                    break;
+   
+                   
+                }
+                else
+                {
+                    Console.WriteLine($"Boken med ISBN {bookToremove} finns inte i systemet.");
+                    return;
+                }
+
+            }
+
+            if (removeBook != null)
+            {
+                Books.Remove(removeBook);
+            }
+
+        }
         
         public static void ReturnBook()
         { }
@@ -58,10 +97,12 @@ namespace MinBibliotek
 
         public static void ShowAllBooks()
         {
+            Console.WriteLine();
+            Console.WriteLine("Lista på alla tillgängliga böcker");
+
             foreach (var item in Books)
             {
-                Console.WriteLine();
-                Console.WriteLine("Lista på alla tillgängliga böcker");
+                
                 Console.WriteLine();
                 Console.WriteLine($"ISBN: {item.ISBN}. Titel: {item.Title}, Författare: {item.Author}");
                 if (item.IsAvailable)
@@ -80,8 +121,7 @@ namespace MinBibliotek
                 }
 
             }
-            Console.WriteLine("Klicka på valfri tangent för att gå tillbaka till menyn");
-            Console.ReadKey();
+            Clear.ClearConsole();
         }
 
     }

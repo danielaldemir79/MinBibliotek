@@ -36,12 +36,16 @@ namespace MinBibliotek
 
             if (foundUser != null)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Välkommen {foundUser.Name}!");
+                Console.ResetColor();
                 return foundUser;
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Fel användarnamn eller lösenord.");
+                Console.ResetColor();
                 return null;
             }
         }

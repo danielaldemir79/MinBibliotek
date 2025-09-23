@@ -41,7 +41,9 @@ namespace MinBibliotek
                         break;
                    
                      case 3:
-                        Console.WriteLine("Programmet avslutas");
+                        Console.WriteLine("Librarrian menyn avslutas");
+                        Clear.ClearConsole();
+                        Program.Begin();
                         break;
                         
                     default:

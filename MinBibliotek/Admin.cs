@@ -9,11 +9,45 @@ namespace MinBibliotek
     internal class Admin : User
     {
 
-        public override void Menu() //
+        public override void Menu() 
         {
+           
+            int choice = 0;
 
-        
-        
+            while (choice != 4)
+            {
+
+                Console.WriteLine();
+                Console.WriteLine("Admin Menu");
+                Console.WriteLine("1. Lägg till bok.");
+                Console.WriteLine("2. Ta bort bok..");
+                Console.WriteLine("3. Visa alla böcker");
+                Console.WriteLine("4. Avsluta");
+                Console.Write("Ange ditt val: ");
+
+                choice = Validering.GetInt();
+                switch (choice)
+                {
+                    case 1:
+                        Book.AddBook();
+                        break;
+                    case 2:
+                        Book.RemoveBook();
+                        break;
+                    case 3:
+                        Book.ShowAllBooks();
+                        break;
+                    case 4:
+                        Console.WriteLine("Admin menyn avslutas");
+                        Clear.ClearConsole();
+                        Program.Begin();
+                        break;
+                    default:
+                        Console.WriteLine("Ogiltigt val. Vänligen försök igen.");
+                        break;
+                }
+            }
+
         }
 
     }

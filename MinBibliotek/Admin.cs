@@ -18,7 +18,10 @@ namespace MinBibliotek
             {
 
                 Console.WriteLine();
-                Console.WriteLine("Admin Menu");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("***Admin Menu***");
+                Console.WriteLine();
+                Console.ResetColor();
                 Console.WriteLine("1. Lägg till bok.");
                 Console.WriteLine("2. Ta bort bok..");
                 Console.WriteLine("3. Visa alla böcker");
@@ -38,7 +41,10 @@ namespace MinBibliotek
                         Book.ShowAllBooks();
                         break;
                     case 4:
+                        Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Admin menyn avslutas");
+                        Console.ResetColor();
                         Clear.ClearConsole();
                         Program.Begin();
                         break;

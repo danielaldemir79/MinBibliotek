@@ -23,7 +23,10 @@ namespace MinBibliotek
             {
 
                 Console.WriteLine();
-                Console.WriteLine("Librarian Menu");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("***Librarian Menu***");
+                Console.ResetColor();
+                Console.WriteLine();
                 Console.WriteLine("1. Lägg till bok.");
                 Console.WriteLine("2. Visa alla böcker.");
                 Console.WriteLine("3. Avsluta");
@@ -41,7 +44,10 @@ namespace MinBibliotek
                         break;
                    
                      case 3:
+                        Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Librarrian menyn avslutas");
+                        Console.ResetColor();
                         Clear.ClearConsole();
                         Program.Begin();
                         break;

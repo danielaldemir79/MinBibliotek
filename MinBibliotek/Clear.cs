@@ -10,7 +10,9 @@ namespace MinBibliotek
     {
         public static void ClearConsole()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
+            Console.ResetColor();
             Console.ReadKey();
             Console.Clear();
         }

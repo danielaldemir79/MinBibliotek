@@ -17,9 +17,9 @@ namespace MinBibliotek
 
         public static User Login()
         {
-            Console.Write("Ange användarnamn: ");
+            Console.Write("Användarnamn: ");
             string name = Validering.GetString().ToLower();
-            Console.Write("Ange lösenord: ");
+            Console.Write("Lösenord: ");
             string password = Validering.GetString();
 
 
@@ -36,8 +36,9 @@ namespace MinBibliotek
 
             if (foundUser != null)
             {
+                Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Välkommen {foundUser.Name}!");
+                Console.WriteLine($"Välkommen {foundUser.Name.ToUpper()}!");
                 Console.ResetColor();
                 return foundUser;
             }

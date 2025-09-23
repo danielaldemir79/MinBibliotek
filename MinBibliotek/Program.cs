@@ -11,11 +11,18 @@
 
         public static void Begin()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine();
-            Console.WriteLine("LINKÖPINGS BIBLIOTEK");
-            Console.WriteLine("VÄLKOMMEN!");
+            Console.WriteLine("____________________________");
+            Console.WriteLine();
+            Console.WriteLine("****LINKÖPINGS BIBLIOTEK****");
+            Console.WriteLine();
+            Console.WriteLine("         VÄLKOMMEN!         ");
+            Console.WriteLine("____________________________");
             Console.WriteLine();
             Console.WriteLine("Logga in här nedan");
+            Console.WriteLine();
+            Console.ResetColor();
 
             User loggedInUser = LoggaIn.Login();
 

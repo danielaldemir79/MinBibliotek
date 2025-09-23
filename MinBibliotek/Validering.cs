@@ -29,6 +29,17 @@
 
         }
 
+        public static string GetString()
+        {
+            string text = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(text))
+            {
+                Console.WriteLine("Felaktig inmatning, försök igen:");
+                text = Console.ReadLine();
+            }
+            return text;
+        }
+
 
     }
 }

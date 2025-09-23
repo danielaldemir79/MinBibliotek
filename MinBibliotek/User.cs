@@ -8,8 +8,9 @@ namespace MinBibliotek
 {
     abstract class User
     {
-        
-        string Name;
+
+        public string Name { get; set; }       
+        public string Password { get; set; }
         public abstract void Menu();
         
        

@@ -13,6 +13,7 @@ namespace MinBibliotek
         string Title;
         string Author;
         bool IsAvailable;
+       string available => IsAvailable ? "Ja" : "Utlånad";
 
         public static List<Book> Books = new List<Book>();
 
@@ -32,14 +33,16 @@ namespace MinBibliotek
             }
 
             Console.Write("Ange boktitel: ");
-            newBook.Title = Console.ReadLine();
+            newBook.Title = Validering.GetString();
             Console.Write("Ange författare: ");
-            newBook.Author = Console.ReadLine();
+            newBook.Author = Validering.GetString();
             newBook.IsAvailable = true;
             Books.Add(newBook);
 
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Boken '{newBook.Title}' av {newBook.Author} med ISBN {newBook.ISBN} har lagts till i biblioteket.");
+            Console.ResetColor();
 
         }
         
@@ -59,10 +62,26 @@ namespace MinBibliotek
             {
                 Console.WriteLine();
                 Console.WriteLine("Lista på alla tillgängliga böcker");
-                Console.WriteLine($"Titel: {item.Title}, Författare: {item.Author}");
-                Console.WriteLine($"ISBN: {item.ISBN}, Tillgänglig: {item.IsAvailable}");
+                Console.WriteLine();
+                Console.WriteLine($"ISBN: {item.ISBN}. Titel: {item.Title}, Författare: {item.Author}");
+                if (item.IsAvailable)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"Tillgänglig: {item.available}");
+                    Console.ResetColor();
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Tillgänglig: {item.available}");
+                    Console.ResetColor();
+                    Console.WriteLine();
+                }
+
             }
-        
+            Console.WriteLine("Klicka på valfri tangent för att gå tillbaka till menyn");
+            Console.ReadKey();
         }
 
     }

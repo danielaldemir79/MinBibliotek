@@ -19,7 +19,9 @@ namespace MinBibliotek
 
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("-------------------");
                 Console.WriteLine("***Borrower Menu***");
+                Console.WriteLine("-------------------");
                 Console.ResetColor();
                 Console.WriteLine();
                 Console.WriteLine("1. Låna en bok.");

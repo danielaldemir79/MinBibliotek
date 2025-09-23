@@ -8,13 +8,7 @@ namespace MinBibliotek
 {
     internal class Librarian : User
     {
-        private int pinCode = 1111;
-
-        public int PinCode
-        {
-            get { return pinCode; }
-            set { pinCode = value; }
-        }
+        
         public override void Menu()
         {
             int choice = 0;
@@ -24,7 +18,9 @@ namespace MinBibliotek
 
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("--------------------");
                 Console.WriteLine("***Librarian Menu***");
+                Console.WriteLine("--------------------");
                 Console.ResetColor();
                 Console.WriteLine();
                 Console.WriteLine("1. Lägg till bok.");

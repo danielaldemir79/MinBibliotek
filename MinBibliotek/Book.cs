@@ -13,7 +13,7 @@ namespace MinBibliotek
         string Title;
         string Author;
         bool IsAvailable;
-       string available => IsAvailable ? "Ja" : "Utlånad";
+       string available => IsAvailable ? "Tillgänglig" : "Utlånad";
 
         public static List<Book> Books = new List<Book>();
 
@@ -203,14 +203,14 @@ namespace MinBibliotek
                 if (item.IsAvailable)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"Tillgänglig: {item.available}");
+                    Console.WriteLine($"Status: {item.available}");
                     Console.ResetColor();
                     Console.WriteLine();
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Tillgänglig: {item.available}");
+                    Console.WriteLine($"Status: {item.available}");
                     Console.ResetColor();
                     Console.WriteLine();
                 }

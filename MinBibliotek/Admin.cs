@@ -19,7 +19,9 @@ namespace MinBibliotek
 
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("----------------");
                 Console.WriteLine("***Admin Menu***");
+                Console.WriteLine("----------------");
                 Console.WriteLine();
                 Console.ResetColor();
                 Console.WriteLine("1. Lägg till bok.");

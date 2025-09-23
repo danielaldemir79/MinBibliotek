@@ -9,9 +9,11 @@ namespace MinBibliotek
     internal class Admin : User
     {
 
-        public override void Menu()
+        public override void Menu() //
         {
 
+        
+        
         }
 
     }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace MinBibliotek
 {
-    internal class Isearchable
+    interface Isearchable
     {
+       abstract void Search();
+
     }
 }

@@ -194,7 +194,19 @@ namespace MinBibliotek
             {
                 
                 Console.WriteLine();
-                Console.WriteLine($"ISBN: {item.ISBN}. Titel: {item.Title}, Författare: {item.Author}");
+                Console.Write("ISBN: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(item.ISBN);
+                Console.ResetColor();
+                Console.Write(" Titel: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(item.Title);
+                Console.ResetColor();
+                Console.Write(" Författare: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(item.Author);
+                Console.ResetColor();
+
                 if (item.IsAvailable)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;

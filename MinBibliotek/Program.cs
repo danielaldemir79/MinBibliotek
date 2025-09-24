@@ -4,9 +4,10 @@
     {
         static void Main(string[] args)
         {
+            FileManager.LoadFromFile();
+
             Begin();
 
-           
         }
 
         public static void Begin()

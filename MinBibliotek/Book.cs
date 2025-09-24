@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace MinBibliotek
 {
-    internal class Book
+    public class Book
     {
 
-        int ISBN;
-        string Title;
-        string Author;
-        bool IsAvailable;
-       string available => IsAvailable ? "Tillgänglig" : "Utlånad";
+        public int ISBN {get; set;}
+        public string Title {get; set;}
+        public string Author {get; set;}
+        public bool IsAvailable {get; set;}
+        public string available => IsAvailable ? "Tillgänglig" : "Utlånad";
 
         public static List<Book> Books = new List<Book>();
 
@@ -43,7 +43,7 @@ namespace MinBibliotek
             newBook.Author = Validering.GetString();
             newBook.IsAvailable = true;
             Books.Add(newBook);
-
+            FileManager.SaveToFile();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Boken '{newBook.Title}' av {newBook.Author} med ISBN {newBook.ISBN} har lagts till i biblioteket.");
@@ -67,15 +67,8 @@ namespace MinBibliotek
             {
                 if (bookToremove == b.ISBN)
                 {
-
-                    removeBook = b;
-
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine();
-                    Console.WriteLine($"Boken {removeBook.Title} med ISBN {removeBook.ISBN} är nu raderad.");
-                    Console.ResetColor();
+                    removeBook = b;               
                     break;
-   
                    
                 }
                 else
@@ -89,6 +82,11 @@ namespace MinBibliotek
             if (removeBook != null)
             {
                 Books.Remove(removeBook);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine();
+                Console.WriteLine($"Boken {removeBook.Title} med ISBN {removeBook.ISBN} är nu raderad.");
+                Console.ResetColor();
+                FileManager.SaveToFile();
             }
 
         }
@@ -117,6 +115,7 @@ namespace MinBibliotek
                         Console.WriteLine();
                         Console.WriteLine($"Du har lämnat tillbaka boken {returnBook.Title} med ISBN {returnBook.ISBN}.");
                         Console.ResetColor();
+                        FileManager.SaveToFile();
                         break;
                     }
                     else
@@ -164,6 +163,7 @@ namespace MinBibliotek
                         Console.WriteLine();
                         Console.WriteLine($"Du har lånat boken {borrowBook.Title} med ISBN {borrowBook.ISBN}.");
                         Console.ResetColor();
+                        FileManager.SaveToFile();
                         break;
                     }
                     else
@@ -194,6 +194,17 @@ namespace MinBibliotek
             Console.WriteLine("_______________________________________");
             Console.WriteLine("Lista på alla tillgängliga böcker");
             Console.ResetColor();
+
+            if (Book.Books.Count == 0)
+            {
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Det finns inga böcker i systemet.");
+                Console.WriteLine();
+                Console.ResetColor();
+                Clear.ClearConsole();
+                return;
+            }
 
             foreach (var item in Books)
             {

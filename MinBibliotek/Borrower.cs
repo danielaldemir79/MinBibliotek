@@ -14,7 +14,7 @@ namespace MinBibliotek
         {
             int choice = 0;
 
-            while (choice != 4)
+            while (choice != 5)
             {
 
                 Console.WriteLine();
@@ -27,7 +27,8 @@ namespace MinBibliotek
                 Console.WriteLine("1. Låna en bok.");
                 Console.WriteLine("2. Lämna tillbaka en bok.");
                 Console.WriteLine("3. Visa alla böcker.");
-                Console.WriteLine("4. Avsluta.");
+                Console.WriteLine("4. Sök efter en bok.");
+                Console.WriteLine("5. Avsluta.");
                 Console.Write("Ange ditt val: ");
 
                 choice = Validering.GetInt();
@@ -45,6 +46,9 @@ namespace MinBibliotek
                         Book.ShowAllBooks();
                         break;
                     case 4:
+                        SearchBook.SearchBooks();
+                        break;
+                    case 5:
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Borrower menyn avslutas");

@@ -13,7 +13,7 @@ namespace MinBibliotek
         {
             int choice = 0;
 
-            while (choice != 3)
+            while (choice != 4)
             {
 
                 Console.WriteLine();
@@ -25,7 +25,8 @@ namespace MinBibliotek
                 Console.WriteLine();
                 Console.WriteLine("1. Lägg till bok.");
                 Console.WriteLine("2. Visa alla böcker.");
-                Console.WriteLine("3. Avsluta");
+                Console.WriteLine("3. Sök efter en bok.");
+                Console.WriteLine("4. Avsluta");
 
                 Console.Write("Ange ditt val: ");
                 choice = Validering.GetInt();
@@ -38,8 +39,10 @@ namespace MinBibliotek
                     case 2:
                         Book.ShowAllBooks();
                         break;
-                   
-                     case 3:
+                   case 3:
+                        SearchBook.SearchBooks();
+                        break;
+                    case 4:
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Librarrian menyn avslutas");

@@ -52,7 +52,9 @@ namespace MinBibliotek
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Inga böcker matchade din sökning.");
+                Console.ResetColor();
             }
         }
 

@@ -54,6 +54,10 @@ namespace MinBibliotek
                         break;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine();
+                        Console.WriteLine("Du har angett felaktigt val");
+                        Console.ResetColor();
                         break;
                 }
             }

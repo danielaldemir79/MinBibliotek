@@ -17,6 +17,7 @@ namespace MinBibliotek
             while (choice != 5)
             {
 
+                
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("----------------");
@@ -25,7 +26,7 @@ namespace MinBibliotek
                 Console.WriteLine();
                 Console.ResetColor();
                 Console.WriteLine("1. Lägg till bok.");
-                Console.WriteLine("2. Ta bort bok..");
+                Console.WriteLine("2. Ta bort bok.");
                 Console.WriteLine("3. Visa alla böcker");
                 Console.WriteLine("4. Sök efter en bok");
                 Console.WriteLine("5. Avsluta");

@@ -36,10 +36,7 @@ namespace MinBibliotek
 
             if (foundUser != null)
             {
-                Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Välkommen {foundUser.Name.ToUpper()}!");
-                Console.ResetColor();
+
                 return foundUser;
             }
             else

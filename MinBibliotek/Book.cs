@@ -20,7 +20,7 @@ namespace MinBibliotek
         public static void AddBook()
         {
             Book newBook = new Book();
-
+            Console.Clear();
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Lägga till Bok"); 
@@ -53,47 +53,39 @@ namespace MinBibliotek
         
         
         public static void RemoveBook()
-        { 
-            Book removeBook = new Book();
-
+        {
+            Console.Clear();
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Ta bort Bok");
             Console.ResetColor();
-            Console.Write("Ange bokens ISBN som du vill ta bort: ");    
-            int bookToremove = Validering.GetInt();
+            Console.Write("Ange bokens ISBN som du vill ta bort: ");
+            int isbnToRemove = Validering.GetInt();
 
-            foreach (Book b in Books)
+            var removeBook = Books.FirstOrDefault(b => b.ISBN == isbnToRemove);
+            
+            if (removeBook == null)
             {
-                if (bookToremove == b.ISBN)
-                {
-                    removeBook = b;               
-                    break;
-                   
-                }
-                else
-                {
-                    Console.WriteLine($"Boken med ISBN {bookToremove} finns inte i systemet.");
-                    return;
-                }
-
-            }
-
-            if (removeBook != null)
-            {
-                Books.Remove(removeBook);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine();
-                Console.WriteLine($"Boken {removeBook.Title} med ISBN {removeBook.ISBN} är nu raderad.");
+                Console.WriteLine($"Boken med ISBN {isbnToRemove} finns inte i systemet.");
                 Console.ResetColor();
-                FileManager.SaveToFile();
+                return;
             }
+
+
+            Books.Remove(removeBook);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine();
+            Console.WriteLine($"Boken {removeBook.Title} med ISBN {removeBook.ISBN} är nu raderad.");
+            Console.ResetColor();
+            FileManager.SaveToFile();
 
         }
         
         public static void ReturnBook()
-        { 
-            
+        {
+            Console.Clear();
+
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Lämna tillbaka Bok");
@@ -104,18 +96,20 @@ namespace MinBibliotek
 
             var returnBook = Books.FirstOrDefault(b => b.ISBN == bookToReturn);
 
-            if (returnBook.IsAvailable == true)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Boken är inte utlånad.");
-                Console.ResetColor();
-                return;
-            }
 
             if (returnBook == null)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Boken med ISBN {bookToReturn} finns inte i systemet.");
+                Console.ResetColor();
+                return;
+            }
+
+
+            if (returnBook.IsAvailable == true)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Boken är inte utlånad.");
                 Console.ResetColor();
                 return;
             }
@@ -135,7 +129,8 @@ namespace MinBibliotek
 
         public static void BorrowBook()
         {
-            
+            Console.Clear();
+
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Låna Bok");
@@ -146,13 +141,6 @@ namespace MinBibliotek
  
 
             var borrowBook = Books.FirstOrDefault(b => b.ISBN == bookToBorrow);
-            if (borrowBook.IsAvailable == false)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Boken är redan utlånad");
-                Console.ResetColor();
-                return;
-            }
 
             if (borrowBook == null)
             {
@@ -161,6 +149,15 @@ namespace MinBibliotek
                 Console.ResetColor();
                 return;
             }
+
+            if (borrowBook.IsAvailable == false)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Boken är redan utlånad");
+                Console.ResetColor();
+                return;
+            }
+
 
             borrowBook.IsAvailable = false;
             Console.ForegroundColor = ConsoleColor.Green;
@@ -173,6 +170,8 @@ namespace MinBibliotek
 
         public static void ShowAllBooks()
         {
+            Console.Clear();
+
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("_______________________________________");
